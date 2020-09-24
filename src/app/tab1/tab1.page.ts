@@ -33,10 +33,6 @@ export class Tab1Page implements OnInit, OnDestroy {
 
   private onSignInSuccess(action: IAuthAction) {
     this.action = action;
-    if (action.action === AuthActions.SignInSuccess ||
-      action.action === AuthActions.LoadTokenFromStorageSuccess) {
-      this.navCtrl.navigateRoot('tabs');
-    }
   }
 
   private onUserInfoSuccess(action: IAuthAction): void {
@@ -49,7 +45,7 @@ export class Tab1Page implements OnInit, OnDestroy {
     this.action = action;
 
     if (action.action === AuthActions.SignOutSuccess) {
-      this.navCtrl.navigateRoot('tabs');
+      delete this.action;
     }
   }
 
